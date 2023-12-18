@@ -8,14 +8,11 @@
     align-items: center;
     justify-content: space-between;
     padding-block: 1.875rem;
-}
+} 
+
+
 .navbar{
     display: flex;
     gap: 1.25rem;
-    padding-right: .9375rem;
-}
-.carrito{
-    color: white;
-    font-size: 38px;
-    padding-right: 1.25rem;
+    padding-right: .9375rem; 
 }

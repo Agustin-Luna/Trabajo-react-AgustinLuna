@@ -1,10 +1,29 @@
-import '../ItemListContainer/ItemListContainer.css'
+import './ItemListContainer.css';
+import { pedirDatos } from '../../utils/utils';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import ItemList from '../ItemList/ItemList';
 
-function ItemListContainer ({mensaje}){
+const ItemListContainer = () => {
+    const [productos, setProductos] = useState([]);
+    const { categoryId } = useParams();
+
+    useEffect(() => {
+    pedirDatos().then((data) => {
+        const filterProducts = categoryId
+        ? data.filter((producto) => producto.category === categoryId)
+        : data;
+
+        setProductos(filterProducts);
+    });
+    }, [categoryId]);
+
     return (
-        <div className='list-container'>
-            <h2>{mensaje}</h2>
-        </div>
-    )
-}
-export default ItemListContainer 
+    <>
+        <ItemList productos={productos} />
+    </>
+    );
+};
+
+export default ItemListContainer;
+
