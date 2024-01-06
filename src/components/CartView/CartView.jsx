@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { CartContex } from "../context/CartContext"
 import Boton from "../../utils/Boton"
 import trashIcon from "../../assets/Trash.svg"
-
+import { Link } from "react-router-dom"
 
 
 const CartView = () => {
@@ -34,6 +34,9 @@ const CartView = () => {
             }
         </ul>
 
+            <Boton className="ml-10">
+                <Link to="/checkout">Terminar mi compra</Link>
+            </Boton>
 
     </section>
     )
