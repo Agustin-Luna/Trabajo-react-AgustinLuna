@@ -9,11 +9,6 @@ const ItemDetail = ({ item }) => {
   const [cantidad, setCantidad] = useState (1)
   const {addToCart, isInCart} = useContext (CartContex)
 
-
-
-
-
-
   const btnAgregar = () => {
     const itemToCart = {
       ...item, 
@@ -46,10 +41,6 @@ const ItemDetail = ({ item }) => {
             <Boton onClick={btnAgregar} className="flex mt-4">Agregar al carrito</Boton>
             </>
           }
-
-
-
-
         </div>
       </div>
     </div>

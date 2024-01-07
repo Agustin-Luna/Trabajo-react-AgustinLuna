@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './components/context/CartContext'
 import CartView from './components/CartView/CartView'
 import Checkout from './components/Checkout/Checkout'
+import Footer from './components/footer/Footer'
 
 
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/checkout' element= {<Checkout/>}/> 
       </Routes>
 
+    <Footer/>
     </BrowserRouter>
 
     </CartProvider>
