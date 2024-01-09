@@ -13,11 +13,10 @@ const ItemList = ({ productos }) => {
             {user.logged && (
                 <div className='mr-2 ml-4 flex items-center'>
                     <p className='mr-2'>{user.email}</p>
-                    <Boton onClick={logOut} className='px-2 py-1'>
+                    <Boton onClick={logOut} className='px-0.5 py-0.5'>
                         Cerrar sesión
                     </Boton>
                 </div>
-                
             )}
             </div>
             <div className="grid gap-8 grid-cols-3">

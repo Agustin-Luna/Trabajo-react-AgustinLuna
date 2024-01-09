@@ -26,13 +26,13 @@ const { login, register, logGoogle } = useContext (userContext)
 
     return (
         <div className="login-c">
-            <div className="p-4 rounded bg-white w-80">
-                <h2 className="text-2xl font-semibold">Login</h2>
+            <div className="p-4  bg-white w-80 border rounded">
+                <h2 className="text-2xl font-semibold text-black">Ingresa tus datos</h2>
                 <hr />
 
                 <form onSubmit={handleSubmit} className='mt-4'>
                 <input
-                    className="border p-2 font-semibold"
+                    className="border p-2 font-semibold mb-2 rounded-md border-black"
                     type="email"
                     placeholder="Email"
                     value={values.email}
@@ -40,7 +40,7 @@ const { login, register, logGoogle } = useContext (userContext)
                     name="email"
                 />
                 <input
-                    className="border p-2 font-semibold"
+                    className="border p-2 font-semibold rounded-md border-black"
                     type="password"
                     placeholder="Password"
                     value={values.password}

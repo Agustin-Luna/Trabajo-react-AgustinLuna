@@ -1,7 +1,7 @@
-section 
+
 const Footer = () => {
     return (
-        <footer className="flex justify-between p-4 mt-7 bg-HEX">
+        <footer className="flex justify-between p-4 mt-7 bg-HEX ">
         <div className=" text-xl mx-4 text-white font-semibold">
             <span>&copy; 2023 Company, Inc</span>
         </div>
