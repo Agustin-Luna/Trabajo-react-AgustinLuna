@@ -2,9 +2,15 @@ import '../Navbar/Navbar.css'
 import Cartwidget from '../Cartwidget/Cartwidget'
 import Icon from '../../assets/Icon-arg.png'
 import { Link } from 'react-router-dom'
+// import { useContext } from 'react'
+// import { userContext } from '../context/UserContext'
+import '../../utils/Boton'
+import Boton from '../../utils/Boton'
 
 
 const Navbar = () => {
+    // const {user, logOut } = useContext(userContext)
+
     return(
         <header className="header">
             <div className="header-container">
@@ -22,6 +28,11 @@ const Navbar = () => {
                     <Cartwidget />
                 </div>
             </div>
+
+            {/* {user.logged && <div className='flex items-center'>
+            <p className='text-white mr-2 ml-4'>{user.email}</p>
+            <Boton onClick={logOut} className='bg-red-600'>Cerrar sesion</Boton>
+            </div>} */}
         </header>
     )
 }

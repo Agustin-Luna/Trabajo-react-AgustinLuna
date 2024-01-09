@@ -96,8 +96,7 @@ const Checkout = () => {
 
                 <button
                     type="submit"
-                    className="bg-black rounded flex items-center py-2 px-4 text-center justify-center text-white font-semibold my-4"
-                >
+                    className="bg-black rounded flex items-center py-2 px-4 text-center justify-center text-white font-semibold my-4">
                     Enviar
                 </button>
             </form>
