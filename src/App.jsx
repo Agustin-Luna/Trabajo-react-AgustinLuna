@@ -13,9 +13,9 @@ function App() {
 
   return (
     <UserProvider>
-    <CartProvider>
-    <AppRouter/>
-    </CartProvider>
+      <CartProvider>
+        <AppRouter/>
+      </CartProvider>
     </UserProvider>
 )
 }

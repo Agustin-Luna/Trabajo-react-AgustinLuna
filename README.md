@@ -1,5 +1,5 @@
 # FUTBOLRETRO 
-Este proyecto a modo de practica, tratara de una tienda que vende camisetas de futbol retro de selecciones, equipos europeos y equipos del futbol argentino. 
+Este proyecto a modo de practica, tratara de una tienda que vende camisetas de futbol retro. 
 
 ## TECNOLOGIAS USADAS EN EL PROYECTO SON LAS SIGUIENTES
 - React js
@@ -12,4 +12,4 @@ Este proyecto a modo de practica, tratara de una tienda que vende camisetas de f
 
 
 ### AUTOR DEL PROYECTO
- Agustin Luna Aldeco 
+Agustin Luna Aldeco 

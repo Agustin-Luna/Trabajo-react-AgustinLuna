@@ -1,10 +1,6 @@
 import Boton from "../../utils/Boton"
 
-
-
-
 const ItemCounter = ({cantidad, stock, setCantidad}) => {
-
     const btnSumar = () => [
         cantidad < stock && setCantidad (cantidad + 1)
     ]

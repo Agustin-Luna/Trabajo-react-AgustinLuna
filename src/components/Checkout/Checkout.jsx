@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { CartContex } from '../context/CartContext';
-import { addDoc, collection, getDoc, updateDoc, doc } from 'firebase/firestore';
+import { addDoc, collection, getDoc, updateDoc, doc, writeBatch, query, where, documentId, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/config';
 import Swal from 'sweetalert2';
 
@@ -22,36 +22,50 @@ const Checkout = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         const orden = {
             cliente: values,
             items: cart,
             total: totalCart(),
             fecha: new Date(),
         };
-
-        const ordersRef = collection(db, 'orders');
-
-    cart.forEach(item => {
-        const docRef = doc(db, 'productos', item.id)
-        getDoc(docRef)
-        .then (doc => {
-            updateDoc(docRef, {
-                stock: doc.data().stock - item.cantidad
-            });
+        const batch = writeBatch(db)
+        const ordersRef = collection(db, "orders");
+        const productsRef = collection(db, 'productos')
+        const itemsQuery = query(productsRef, where( documentId(), 'in', cart.map(prod => prod.id) ))
+        console.log( cart.map(prod => prod.id) )
+        const querySnapshot = await getDocs(itemsQuery)
+        const carritoVacio = []
+        querySnapshot.docs.forEach(doc => {
+            const item = cart.find(prod => prod.id === doc.id)
+            const stock = doc.data().stock
+            
+            if (stock >= item.cantidad) { 
+            batch.update(doc.ref, {
+                stock: stock - item.cantidad
+            })
+            } else {
+            carritoVacio.push(item)
+            }
         })
-    })
-    addDoc(ordersRef, orden).then((doc) => {
-        setOrderId(doc.id)
-        clearCart()
 
-        Swal.fire("Gracias por su compra")
-    })
-    };
-
-
+        if (carritoVacio.length === 0) {
+            batch.commit()
+            .then(() => {      
+                addDoc(ordersRef, orden).then((doc) => {
+                    setOrderId(doc.id)
+                    clearCart()
+    
+                    Swal.fire("Gracias por su compra")
+                });
+            })
+        } else {
+            Swal.fire("No tenemos stock del producto que desea comprar")
+        }
+    
+        };
 
     if (orderId) {
         return (
@@ -84,7 +98,7 @@ const Checkout = () => {
                     value={values.direccion}
                     onChange={handleInputChange}
                     name="direccion"
-                />
+                    />
                 <input
                     className="border p-2 font-semibold"
                     type="email"
